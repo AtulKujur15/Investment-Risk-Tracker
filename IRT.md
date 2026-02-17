@@ -183,7 +183,7 @@ Investment-Risk-Tracker/
 
 Clone the repository
 
-git clone https://github.com/your-username/investment-risk-tracker.git
+[git clone https://github.com/your-username/investment-risk-tracker.git](https://github.com/AtulKujur15/Investment-Risk-Tracker.git)
 
 
 Install dependencies
