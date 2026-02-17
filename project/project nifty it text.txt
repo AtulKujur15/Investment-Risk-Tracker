@@ -1,0 +1,31 @@
+import pandas as pd
+import datetime as dt
+import os 
+from matplotlib import pyplot as plt
+path=r"C:\Users\Admin\Desktop\codersdaily\project\Collection"
+dir_list=os.listdir(path)
+print(dir_list)
+l1 = []
+name = []
+for i in dir_list:
+    try:
+        df=pd.read_csv("Collection/"+i)
+        df['Year'] = pd.DatetimeIndex(df['Date']).year
+        new_df=(df.groupby('Year').first())
+        #print(new_df)
+        new_df.dropna(inplace=True)
+        num_year = len(new_df['Open'])
+        #print(num_year)
+        amount = 50000*num_year
+        new_df['Return']=((50000/new_df['Open'])*new_df['Open'].iloc[-1])
+        #print(new_df)
+        inv=new_df['Return'].sum()
+        name.append(i)
+        l1.append(((inv-amount)/amount)*100)
+    except:
+        print(i, "Error")
+print(len(name), len(l1))
+plt.bar(name, l1)
+plt.show()
+
+
